@@ -1,3 +1,3 @@
-# SLiM-Pocket detector
+# Pocket detector
 
 A simple app to detect pockets.
