@@ -20,7 +20,7 @@
 4. Opens a menu with links to external resources.
 <div align="center">
 | <img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page2.png" width="300"/> |
-|:--:|
+|:---:|
 | **Figure 3** External links menu. |
 </div>
 5. Interactive 3D viewer of AlphaFold predicted protein structure and protein sequence.
