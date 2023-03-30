@@ -14,10 +14,12 @@
 | ![analysis page](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page1.png) |
 |:--:|
 | **Figure 2** The default analysis page of the xProtCAS web server. |
+
 1. Tool name (clicking on it takes you back to the home page)
 2. Protein name (click should be removed because it requires login).
 3. Species.
 4. Opens a menu with links to external resources.
+
 <table align="center">
 <thead>
 <tr>
@@ -30,6 +32,7 @@
 </tr>
 </tbody>
 </table>
+
 5. Interactive 3D viewer of AlphaFold predicted protein structure and protein sequence.
 6. Button to hide/display the side menu.
 7. Button to go back to the home page.
