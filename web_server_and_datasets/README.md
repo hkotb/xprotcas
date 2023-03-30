@@ -43,9 +43,19 @@
     - Display the separated structural unit (Default).
     - Display the structural unit in the context of the full-length protein.
 
-| ![analysis page](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page3.png) |
-|:--:|
-| **Figure 4** The structural unit in the context of the full-length protein. |
+<table align="center">
+<thead>
+<tr>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page3.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page3.png" width="500" style="max-width: 100%;"></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>Figure 4</strong> The structural unit in the context of the full-length protein.</td>
+</tr>
+</tbody>
+</table>
+
     - Display the graph representation of the structural unit.
 
 | ![analysis page](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png) |
