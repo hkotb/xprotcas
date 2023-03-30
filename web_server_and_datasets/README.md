@@ -61,7 +61,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png" width="500" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png" width="450" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -76,7 +76,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png" width="700" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png" width="500" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
