@@ -1,4 +1,4 @@
-# Pocket detector
+# xProtCAS: a toolkit for extracting conserved accessible surfaces from protein structures
 
 Pipeline to rank patches on the protein surface based on their evolutionary conservation. Hence, it can be used to find accessible, functional regions or pockets. The relatively high conservation property of SLiM-binding interfaces makes them more likely to be ranked first by the pipeline in SLiM-binding domains.
 
