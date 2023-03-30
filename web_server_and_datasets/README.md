@@ -18,7 +18,7 @@
 2. Protein name (click should be removed because it requires login).
 3. Species.
 4. Opens a menu with links to external resources.
-<div style="text-align:center">
+<div align="center">
 | <img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page2.png" width="300"/> |
 |:--:|
 | **Figure 3** External links menu. |
