@@ -18,11 +18,9 @@
 2. Protein name (click should be removed because it requires login).
 3. Species.
 4. Opens a menu with links to external resources.
-<div align="center">
-| <img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page2.png" width="300"/> |
-|:---:|
-| **Figure 3** External links menu. |
-</div>
+ <img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page2.png" width="300"/> 
+:---:
+**Figure 3** External links menu.
 5. Interactive 3D viewer of AlphaFold predicted protein structure and protein sequence.
 6. Button to hide/display the side menu.
 7. Button to go back to the home page.
