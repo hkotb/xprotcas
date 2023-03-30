@@ -15,10 +15,10 @@
 |:--:|
 | **Figure 2** The default analysis page of the xProtCAS web server. |
 
-1. Tool name (clicking on it takes you back to the home page)
-2. Protein name (click should be removed because it requires login).
-3. Species.
-4. Opens a menu with links to external resources.
+### 1. Tool name (clicking on it takes you back to the home page)
+### 2. Protein name (click should be removed because it requires login).
+### 3. Species.
+### 4. Opens a menu with links to external resources.
 
 <table align="center">
 <thead>
@@ -33,15 +33,15 @@
 </tbody>
 </table>
 
-5. Interactive 3D viewer of AlphaFold predicted protein structure and protein sequence.
-6. Button to hide/display the side menu.
-7. Button to go back to the home page.
-8. List the predicted autonomous structural units with the ability to switch between them to change the viewer's perspective. Each record of a structural unit is represented by 2 lines:
-    1. Pfam domains and the start and end positions of the structural unit on the protein sequence.
-    2. Mean patch conservation, mean conservation of the surface, the difference between mean patch conservation and mean non-patch conservation, and finally, the p-value of the patch conservation to the non-patch region.
-9. Switch between different views of the selected structural unit:
-    - Display the separated structural unit (Default).
-    - Display the structural unit in the context of the full-length protein.
+### 5. Interactive 3D viewer of AlphaFold predicted protein structure and protein sequence.
+### 6. Button to hide/display the side menu.
+### 7. Button to go back to the home page.
+### 8. List the predicted autonomous structural units with the ability to switch between them to change the viewer's perspective. Each record of a structural unit is represented by 2 lines:
+#### 1. Pfam domains and the start and end positions of the structural unit on the protein sequence.
+#### 2. Mean patch conservation, mean conservation of the surface, the difference between mean patch conservation and mean non-patch conservation, and finally, the p-value of the patch conservation to the non-patch region.
+### 9. Switch between different views of the selected structural unit:
+#### - Display the separated structural unit (Default).
+#### - Display the structural unit in the context of the full-length protein.
 
 <table align="center">
 <thead>
@@ -56,7 +56,7 @@
 </tbody>
 </table>
 
-    - Display the graph representation of the structural unit.
+#### - Display the graph representation of the structural unit.
 
 <table align="center">
 <thead>
@@ -71,12 +71,12 @@
 </tbody>
 </table>
 
-    - Display the multiple sequence alignment of the structural unit.
+#### - Display the multiple sequence alignment of the structural unit.
 
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png" width="500" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png" width="700" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -86,14 +86,14 @@
 </tbody>
 </table>
 
-10. Switch between different scoring schemes for colouring residues/nodes in the viewer window.
-    - Region: Displays the structural unit residues (coloured in red).
-    - Eigenvector Centrality: Centrality scores are used in colouring residues while white represents low-scoring residues, blue for the medium range, and red for the high scores.
+### 10. Switch between different scoring schemes for colouring residues/nodes in the viewer window.
+#### - Region: Displays the structural unit residues (coloured in red).
+#### - Eigenvector Centrality: Centrality scores are used in colouring residues while white represents low-scoring residues, blue for the medium range, and red for the high scores.
 
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page6.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page6.png" width="500" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page6.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page6.png" width="700" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -103,10 +103,10 @@
 </tbody>
 </table>
 
-    - Weighted Conservation Score: WCS are used in colouring residues.
-    - AlphaFold2 pLDDT: pLDDT scores of the AlphaFold model are used in colouring residues.
-    - AlphaFold2 accessibility: Accessibility scores calculated using DSSP software are used in colouring residues.
-    - Tesselation accessibility all atom: Tesselation accessibility where the residue is considered accessible if any of its atoms is accessible. Accessible residues are displayed in red.
-    - Tesselation accessibility sidechain: Tesselation accessibility where the residue is considered accessible if any of its side chain atoms is accessible. Accessible residues are displayed in red.
-11. Display the loading status of the data used on this page. After loading data finishes, the related functionality on this page resumes, and data can be downloaded (Centrality data, UniProt data, AlphaFold data, Accessibility data, Contact data, Conservation data, and Alignment data).
-12. External links.
+#### - Weighted Conservation Score: WCS are used in colouring residues.
+#### - AlphaFold2 pLDDT: pLDDT scores of the AlphaFold model are used in colouring residues.
+#### - AlphaFold2 accessibility: Accessibility scores calculated using DSSP software are used in colouring residues.
+#### - Tesselation accessibility all atom: Tesselation accessibility where the residue is considered accessible if any of its atoms is accessible. Accessible residues are displayed in red.
+#### - Tesselation accessibility sidechain: Tesselation accessibility where the residue is considered accessible if any of its side chain atoms is accessible. Accessible residues are displayed in red.
+### 11. Display the loading status of the data used on this page. After loading data finishes, the related functionality on this page resumes, and data can be downloaded (Centrality data, UniProt data, AlphaFold data, Accessibility data, Contact data, Conservation data, and Alignment data).
+### 12. External links.
