@@ -38,7 +38,7 @@ class AlphafoldDomainsSplitter():
 
 		return matrix
 
-	def domains_from_pae_matrix_networkx(self, pae_json_file, pdb_path, pae_power=1, pae_cutoff=5, graph_resolution=1):
+	def domains_from_pae_matrix_networkx(self, pae_json_file, pdb_path, pae_power=1, pae_cutoff=5, graph_resolution=0.4):
 		
 		pae_matrix = self.parse_pae_file(pae_json_file)
 		pLDDT = self.get_pLDDT(pdb_path)

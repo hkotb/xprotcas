@@ -3,6 +3,8 @@ import argparse
 from Bio.PDB import PDBParser, Selection
 from Bio.PDB.Polypeptide import three_to_one
 
+from scipy.stats import mannwhitneyu
+
 from pdb_parser import read_clean_pdb
 from accessibility_scorer import AccessibilityScorer
 from centrality_scorer import CentralityScorer
@@ -36,7 +38,7 @@ class PipelineStarter:
 		parser.add_argument('--conservations_file', type=str, default=None, help='The name of conservation scores file (should be saved in the input directory). If it is passed, the pipeline will use it and not call SLiM RESTful APIs to get the conservation scores based on uniprot/pdb options.')
 		parser.add_argument('--split_into_domains', type=str, default='true', choices=['true', 'false'], help='If true, the pipeline will split AlphaFold predicted structure into domains. (default: true)')
 		parser.add_argument('--predicted_aligned_error_file', type=str, default=None, help='The name of AlphaFold predicted aligned error file (should be saved in the input directory). If it is passed, the pipeline will use it instead of trying to download it from AlphaFold database. It is used in splitting AlphaFold predicted structure into domains.')
-		parser.add_argument('--orthdb_taxon_id', type=str, default='metazoa', choices=['metazoa', 'qfo'], help='The search database to find orthologous sequences to the query structure. It is used by SLiM tools to generate conservations. (default: metazoa)')
+		parser.add_argument('--orthdb_taxon_id', type=str, default='metazoa', choices=['metazoa', 'qfo', 'vertebrates', 'mammalia'], help='The search database to find orthologous sequences to the query structure. It is used by SLiM tools to generate conservations. (default: metazoa)')
 		parser.add_argument('--number_of_iterations', type=int, default=20, help='Maximum number of iterations the pipeline will perform (per each chain/domain). (default: 20)')
 		parser.add_argument('--log', type=str, default='info', choices=['debug', 'info', 'warning', 'error', 'critical'], help='Specify the logging level. (default: info)')
 		parser.add_argument('--slim_server', type=str, default='http://slim.icr.ac.uk/restapi/rest/get/', help='SLiM tools server url.')
@@ -163,6 +165,9 @@ class PipelineStarter:
 		start = time.time()
 		alphafoldDomainsSplitterObj = AlphafoldDomainsSplitter()
 		domains = alphafoldDomainsSplitterObj.domains_from_pae_matrix_networkx(predicted_aligned_error_file, pdb_file)
+		if not domains:
+			logging.info('found no domains, will use the whole protein!')
+			domains = [None]
 		end = time.time()
 		logging.info('Finished splitting in %f seconds', end - start)
 		return domains
@@ -222,7 +227,7 @@ class PipelineStarter:
 				for residue in accessibility_data[pdb_chain][domain]['accessible_residues']:
 					if residue not in merged_data[pdb_chain][domain]['residues']:
 						merged_data[pdb_chain][domain]['residues'][residue] = {}
-					merged_data[pdb_chain][domain]['residues'][residue]['accessibility'] = accessibility_data[pdb_chain][domain]['accessible_residues'][residue]['any_atm_score']
+					merged_data[pdb_chain][domain]['residues'][residue]['accessibility'] = accessibility_data[pdb_chain][domain]['accessible_residues'][residue]['side_chain_score']
 				
 				for residue in accessibility_data[pdb_chain][domain]['direct_neighbors']:
 					if residue not in merged_data[pdb_chain][domain]['residues']:
@@ -246,13 +251,55 @@ class PipelineStarter:
 		centralityScorerObj.eigenvector_centrality(merged_data, number_of_iterations, logging)
 		end = time.time()
 		logging.info('Finished calculating scores and patches in %f seconds', end - start)
-		
-	def create_pymol_session(self, merged_data, pdb_file, output_path):
+	
+	def run_patch_evaluation(self, merged_data, number_of_iterations):
+		logging.info("Running patch evaluation...")
+		start = time.time()
+		for pdb_chain in merged_data:
+			for domain in merged_data[pdb_chain]:
+				surface_residues = []
+				num_surface_residues = 0
+				sum_surface_conservation = 0
+				for residue in merged_data[pdb_chain][domain]['residues']:
+					acc = merged_data[pdb_chain][domain]['residues'][residue]['accessibility'] if 'accessibility' in merged_data[pdb_chain][domain]['residues'][residue] else -1
+					cons = merged_data[pdb_chain][domain]['residues'][residue]['conservation'] if 'conservation' in merged_data[pdb_chain][domain]['residues'][residue] else 0
+					if acc > 0.001 and 'conservation' in merged_data[pdb_chain][domain]['residues'][residue]:
+						surface_residues.append(residue)
+						num_surface_residues+=1
+						sum_surface_conservation+=cons
+				
+				for patch_indx in range(1, number_of_iterations+1):
+					patch_key = 'patch_' + str(patch_indx)
+					if patch_key in merged_data[pdb_chain][domain]:
+						patch_residues = merged_data[pdb_chain][domain][patch_key]['residues']
+						num_patch_residues = len(patch_residues)
+						patch_conservations = []
+						sum_patch_conservation = 0
+						for residue in patch_residues:
+							patch_conservations.append(merged_data[pdb_chain][domain]['residues'][residue]['conservation'])
+							sum_patch_conservation+=merged_data[pdb_chain][domain]['residues'][residue]['conservation']
+						
+						non_patch_residues = set(surface_residues) - set(patch_residues)
+						num_non_patch_residues = num_surface_residues - num_patch_residues
+						non_patch_conservations = []
+						sum_non_patch_conservation = sum_surface_conservation - sum_patch_conservation
+						for residue in non_patch_residues:
+							non_patch_conservations.append(merged_data[pdb_chain][domain]['residues'][residue]['conservation'])
+						
+						U1, p = mannwhitneyu(patch_conservations, non_patch_conservations, alternative='greater')
+						
+						merged_data[pdb_chain][domain][patch_key]['patch_conservation_mean'] = sum_patch_conservation/num_patch_residues
+						merged_data[pdb_chain][domain][patch_key]['patch_conservation_difference'] = (sum_patch_conservation/num_patch_residues)-(sum_non_patch_conservation/num_non_patch_residues)
+						merged_data[pdb_chain][domain][patch_key]['patch_conservation_pvalue'] = p
+		end = time.time()
+		logging.info('Finished patch evaluation in %f seconds', end - start)
+	
+	def create_pymol_session(self, merged_data, pdb_file, number_of_iterations, output_path):
 		logging.info("Creating PyMol session...")
 		start = time.time()
 		cmd.reinitialize()
 		pdb_file_no_ext = Path(pdb_file).stem
-		for i, prop in enumerate(["conservation"]+["score_"+str(patch_indx) for patch_indx in range(1, 21)]):
+		for i, prop in enumerate(["conservation"]+["score_"+str(patch_indx) for patch_indx in range(1, number_of_iterations+1)]):
 			cmd.load(pdb_file)
 			cmd.hide('everything')
 			cmd.show("surface")
@@ -336,12 +383,14 @@ class PipelineStarter:
 		
 		self.run_centrality_iterations(merged_data, args.number_of_iterations)
 		
+		self.run_patch_evaluation(merged_data, args.number_of_iterations)
+		
 		with open(os.path.join(output_path, 'merged_data.json'), 'w') as fl:
 			json.dump(merged_data, fl)
 		
 		if args.create_pymol_session:
 			if is_pymol_installed:
-				self.create_pymol_session(merged_data, pdb_file, output_path)
+				self.create_pymol_session(merged_data, pdb_file, args.number_of_iterations, output_path)
 			else:
 				logging.warning('Pymol is not installed, no pymol session will be created!')
 

@@ -66,7 +66,7 @@ class CentralityScorer():
 										queue.append(nbr)
 										high_scores_set.remove(nbr)
 										
-						merged_data[pdb_chain][domain]['patch_' + str(patch_indx)] = patch
+						merged_data[pdb_chain][domain]['patch_' + str(patch_indx)] = {'residues': patch}
 						previous_patches.update(patch)
 					else:
 						logging.info("Stopped iterating after %d iterations due to null graph (chain %s, domain %s).", patch_indx, pdb_chain, domain)

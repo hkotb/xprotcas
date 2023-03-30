@@ -136,6 +136,7 @@ python pipeline_starter.py --pdb_file AF-Q9Y2M5-F1-model_v2.pdb --predicted_alig
 ```
 > **Note**
 > Assuming the files are placed in the default input directory, there is no need to pass --input argument.
+
 using docker:
 ```
 docker run -t -d --name my_pocket_container pocket_docker
@@ -262,7 +263,7 @@ The merged_data.json file is the major output of the pipeline and it has the fol
     .   .   .   .   .
     .   .   .   .   .
     .   .   .   .   .
-    │   │   │   │   └── "score_X"               # The centrality score for this residue on Xth iteration. X is the last iteration when this residue was selected in the patch of central residues.
+    │   │   │   │   └── "score_X"               # The centrality score for this residue on Xth iteration. X is the iteration when this residue was selected in the patch of central residues.
     .   .   .   .
     .   .   .   .
     .   .   .   .
@@ -271,7 +272,7 @@ The merged_data.json file is the major output of the pipeline and it has the fol
     .   .   .
     .   .   .
     .   .   .
-    │   │   └── "patch_Y"                       # List of residues in the Yth patch. This is the patch extracted in the Yth iteration of the pipeline. Y is also the last iteration when the pipeline managed to extract a patch. It may equal to --number_of_iterations, but broblems might happen like centrality algorithm didn't converge or found a null graph which stops the pipeline from iterating.
+    │   │   └── "patch_Y"                       # List of residues in the Yth patch. This is the patch extracted in the Yth iteration of the pipeline. Y is also the last iteration when the pipeline managed to extract a patch. It may equal to --number_of_iterations, but problems might happen like centrality algorithm didn't converge or found a null graph which stops the pipeline from iterating.
 
 ##### Example:
 ```
@@ -456,6 +457,8 @@ The merged_data.json file is the major output of the pipeline and it has the fol
 #### Visualise PyMOL session file
 
 *.pse file can be loaded using PyMOL. It enables the virtualisation of all the detected patches with their ranks.
+
+Example:
 ![PyMOL session](https://raw.githubusercontent.com/hkotb/pocket-detector/main/img/pymol.gif)
 > **Note**
 > In this example, chain A is split into two domains, A1 and A2. A.excluded contains the excluded residues, whether because they are in the protein's core or disordered. The red colours on the 3D structure represent high scores, while blue is for average scores.
