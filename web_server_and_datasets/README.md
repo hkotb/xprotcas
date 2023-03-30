@@ -40,8 +40,8 @@
 #### 1. Pfam domains and the start and end positions of the structural unit on the protein sequence.
 #### 2. Mean patch conservation, mean conservation of the surface, the difference between mean patch conservation and mean non-patch conservation, and finally, the p-value of the patch conservation to the non-patch region.
 ### 9. Switch between different views of the selected structural unit:
-#### - Display the separated structural unit (Default).
-#### - Display the structural unit in the context of the full-length protein.
+###### - Display the separated structural unit (Default).
+###### - Display the structural unit in the context of the full-length protein.
 
 <table align="center">
 <thead>
