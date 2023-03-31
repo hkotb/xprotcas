@@ -61,14 +61,9 @@ To pull our prebuilt image run the following command:
 
 ```
 docker pull hkotb/xprotcas
-git clone https://github.com/hkotb/xProtCAS.git
-cd xProtCAS/
 ```
 > **Note**
 > You have to abide by the name of the prebuilt image while using it later (*hkotb/xprotcas*).
-
-> **Note**
-> When using docker to run the pipeline, it is more convenient to make `xProtCAS` your current working directory, as the docker commands in the [Usage](#usage) section assume that while copying files between the local machine and the container.
 
 ## Usage
 
