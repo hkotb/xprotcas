@@ -34,6 +34,8 @@ The following is the list of required libraries and programs, as well as the ver
 
 ## Installation methods
 
+Choose one of the three following installation methods. However, using our prebuild docker image is the easiest way to get started.
+
 ### Install manually
 
 Install dependencies in the [Software prerequisites](#software-prerequisites) section and clone the repository to a local directory:
