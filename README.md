@@ -1,6 +1,6 @@
 # xProtCAS: a toolkit for extracting conserved accessible surfaces from protein structures
 
-Pipeline to rank patches on the protein surface based on their evolutionary conservation. Hence, it can be used to find accessible, functional regions or pockets. The relatively high conservation property of SLiM-binding interfaces makes them more likely to be ranked first by the pipeline in SLiM-binding domains.
+Pipeline to score residues and extract patches from the protein surface based on their conservation. Hence, it can be used to find accessible, functional regions or binding interfaces.
 
 ## Table of contents
 * [Description](#description)
@@ -37,38 +37,38 @@ The following is the list of required libraries and programs, as well as the ver
 Install dependencies in the [Software prerequisites](#software-prerequisites) section and clone the repository to a local directory:
 
 ```
-git clone https://github.com/hkotb/pocket-detector.git
-cd pocket-detector/src
+git clone https://github.com/hkotb/xProtCAS.git
+cd xProtCAS/src
 ```
 > **Note**
-> It is more convenient to make `pocket-detector/src` your current working directory before running the pipeline using python commands on your local machine, as the default input and output pathes are relative pathes.
+> It is more convenient to make `xProtCAS/src` your current working directory before running the pipeline using python commands on your local machine, as the default input and output pathes are relative pathes.
 
 ### Build a docker image
 
 To build a Docker image from the provided Dockerfile run the following steps:
 
 ```
-git clone https://github.com/hkotb/pocket-detector.git
-cd pocket-detector/
-docker build -t pocket_docker .
+git clone https://github.com/hkotb/xProtCAS.git
+cd xProtCAS/
+docker build -t xprotcas .
 ```
 > **Note**
-> You have to abide by the name you choose while using your built image later (*pocket_docker*).
+> You have to abide by the name you choose while using your built image later (*xprotcas*).
 
 ### Pull a prebuilt docker image
 
-To pull the prebuilt image run the following command:
+To pull our prebuilt image run the following command:
 
 ```
-docker pull (coming soon)
-git clone https://github.com/hkotb/pocket-detector.git
-cd pocket-detector/
+docker pull hkotb/xprotcas
+git clone https://github.com/hkotb/xProtCAS.git
+cd xProtCAS/
 ```
 > **Note**
-> You have to abide by the name of the prebuilt image while using it later (*coming soon*).
+> You have to abide by the name of the prebuilt image while using it later (*hkotb/xprotcas*).
 
 > **Note**
-> When using docker to run the pipeline, it is more convenient to make `pocket-detector` your current working directory, as the docker commands in the [Usage](#usage) section assume that while copying files between the local machine and the container.
+> When using docker to run the pipeline, it is more convenient to make `xProtCAS` your current working directory, as the docker commands in the [Usage](#usage) section assume that while copying files between the local machine and the container.
 
 ## Usage
 
@@ -79,7 +79,7 @@ python pipeline_starter.py -h
 ##### output
 ```
 usage: pipeline_starter.py [-h] [--output OUTPUT] [--input INPUT] [--uniprot UNIPROT] [--pdb PDB] [--create_pymol_session {true,false}] [--pdb_file PDB_FILE] [--conservations_file CONSERVATIONS_FILE]
-                           [--split_into_domains {true,false}] [--predicted_aligned_error_file PREDICTED_ALIGNED_ERROR_FILE] [--orthdb_taxon_id {metazoa,qfo}]
+                           [--split_into_domains {true,false}] [--predicted_aligned_error_file PREDICTED_ALIGNED_ERROR_FILE] [--orthdb_taxon_id {metazoa,qfo,vertebrates,mammalia}]
                            [--number_of_iterations NUMBER_OF_ITERATIONS] [--log {debug,info,warning,error,critical}] [--slim_server SLIM_SERVER]
 
 Run functional regions detector.
@@ -102,7 +102,7 @@ optional arguments:
   --predicted_aligned_error_file PREDICTED_ALIGNED_ERROR_FILE
                         The name of AlphaFold predicted aligned error file (should be saved in the input directory). If it is passed, the pipeline will use it instead of trying to download it from
                         AlphaFold database. It is used in splitting AlphaFold predicted structure into domains.
-  --orthdb_taxon_id {metazoa,qfo}
+  --orthdb_taxon_id {metazoa,qfo,vertebrates,mammalia}
                         The search database to find orthologous sequences to the query structure. It is used by SLiM tools to generate conservations. (default: metazoa)
   --number_of_iterations NUMBER_OF_ITERATIONS
                         Maximum number of iterations the pipeline will perform (per each chain/domain). (default: 20)
@@ -120,11 +120,11 @@ python pipeline_starter.py --uniprot Q9Y2M5
 ```
 using docker:
 ```
-docker run -t -d --name my_pocket_container pocket_docker
-docker exec -it my_pocket_container python pipeline_starter.py --uniprot Q9Y2M5
-docker cp my_pocket_container:/home/submitter/output ./
-docker stop my_pocket_container
-docker rm my_pocket_container
+docker run -t -d --name my_xprotcas_container hkotb/xprotcas
+docker exec -it my_xprotcas_container python pipeline_starter.py --uniprot Q9Y2M5
+docker cp my_xprotcas_container:/home/submitter/output ./
+docker stop my_xprotcas_container
+docker rm my_xprotcas_container
 ```
 > **Note**
 > The `run` command creates a container, `exec` uses the created container to run the command, `cp` copies the output from inside the container to your local mahcine, `stop` and `rm` to stop the container and remove it. We prefer to use `cp` command over mounting local directories as docker volumes to avoid any permission probelmes between the host and the container.
@@ -139,12 +139,12 @@ python pipeline_starter.py --pdb_file AF-Q9Y2M5-F1-model_v2.pdb --predicted_alig
 
 using docker:
 ```
-docker run -t -d --name my_pocket_container pocket_docker
-docker cp ./input my_pocket_container:/home/submitter/
-docker exec -it my_pocket_container python pipeline_starter.py --pdb_file AF-Q9Y2M5-F1-model_v2.pdb --predicted_aligned_error_file AF-Q9Y2M5-F1-predicted_aligned_error_v2.json --conservations_file Q9Y2M5.json
-docker cp my_pocket_container:/home/submitter/output ./
-docker stop my_pocket_container
-docker rm my_pocket_container
+docker run -t -d --name my_xprotcas_container hkotb/xprotcas
+docker cp ./input my_xprotcas_container:/home/submitter/
+docker exec -it my_xprotcas_container python pipeline_starter.py --pdb_file AF-Q9Y2M5-F1-model_v2.pdb --predicted_aligned_error_file AF-Q9Y2M5-F1-predicted_aligned_error_v2.json --conservations_file Q9Y2M5.json
+docker cp my_xprotcas_container:/home/submitter/output ./
+docker stop my_xprotcas_container
+docker rm my_xprotcas_container
 ```
 > **Note**
 > We have added here one extra `cp` step to copy the input directory from your local machine to the container before executing the command.
@@ -156,12 +156,12 @@ python pipeline_starter.py --uniprot Q9Y2M5 --conservations_file Q9Y2M5.json
 ```
 using docker:
 ```
-docker run -t -d --name my_pocket_container pocket_docker
-docker cp ./input my_pocket_container:/home/submitter/
-docker exec -it my_pocket_container python pipeline_starter.py --uniprot Q9Y2M5 --conservations_file Q9Y2M5.json
-docker cp my_pocket_container:/home/submitter/output ./
-docker stop my_pocket_container
-docker rm my_pocket_container
+docker run -t -d --name my_xprotcas_container hkotb/xprotcas
+docker cp ./input my_xprotcas_container:/home/submitter/
+docker exec -it my_xprotcas_container python pipeline_starter.py --uniprot Q9Y2M5 --conservations_file Q9Y2M5.json
+docker cp my_xprotcas_container:/home/submitter/output ./
+docker stop my_xprotcas_container
+docker rm my_xprotcas_container
 ```
 
 #### Example 4
@@ -171,23 +171,23 @@ python pipeline_starter.py --pdb 6GY5
 ```
 using docker:
 ```
-docker run -t -d --name my_pocket_container pocket_docker
-docker exec -it my_pocket_container python pipeline_starter.py --pdb 6GY5
-docker cp my_pocket_container:/home/submitter/output ./
-docker stop my_pocket_container
-docker rm my_pocket_container
+docker run -t -d --name my_xprotcas_container hkotb/xprotcas
+docker exec -it my_xprotcas_container python pipeline_starter.py --pdb 6GY5
+docker cp my_xprotcas_container:/home/submitter/output ./
+docker stop my_xprotcas_container
+docker rm my_xprotcas_container
 ```
 To run the four previous examples in sequence using docker:
 ```
-docker run -t -d --name my_pocket_container pocket_docker
-docker cp ./input my_pocket_container:/home/submitter/
-docker exec -it my_pocket_container python pipeline_starter.py --uniprot Q9Y2M5
-docker exec -it my_pocket_container python pipeline_starter.py --pdb_file AF-Q9Y2M5-F1-model_v2.pdb --predicted_aligned_error_file AF-Q9Y2M5-F1-predicted_aligned_error_v2.json --conservations_file Q9Y2M5.json
-docker exec -it my_pocket_container python pipeline_starter.py --uniprot Q9Y2M5 --conservations_file Q9Y2M5.json
-docker exec -it my_pocket_container python pipeline_starter.py --pdb 6GY5
-docker cp my_pocket_container:/home/submitter/output ./
-docker stop my_pocket_container
-docker rm my_pocket_container
+docker run -t -d --name my_xprotcas_container hkotb/xprotcas
+docker cp ./input my_xprotcas_container:/home/submitter/
+docker exec -it my_xprotcas_container python pipeline_starter.py --uniprot Q9Y2M5
+docker exec -it my_xprotcas_container python pipeline_starter.py --pdb_file AF-Q9Y2M5-F1-model_v2.pdb --predicted_aligned_error_file AF-Q9Y2M5-F1-predicted_aligned_error_v2.json --conservations_file Q9Y2M5.json
+docker exec -it my_xprotcas_container python pipeline_starter.py --uniprot Q9Y2M5 --conservations_file Q9Y2M5.json
+docker exec -it my_xprotcas_container python pipeline_starter.py --pdb 6GY5
+docker cp my_xprotcas_container:/home/submitter/output ./
+docker stop my_xprotcas_container
+docker rm my_xprotcas_container
 ```
 
 ## Input files
@@ -268,11 +268,15 @@ The merged_data.json file is the major output of the pipeline and it has the fol
     .   .   .   .
     .   .   .   .
     │   │   │   └── residue's sequence number
-    │   │   ├── "patch_1"                       # List of residues in the first patch. This is the patch extracted in the first iteration of the pipeline.
+    │   │   ├── "patch_1"                             # The first patch. This is the patch extracted in the first iteration of the pipeline.
+    │   │   │   ├── "residues"                        # List of residues in the first patch.
+    │   │   │   ├── "patch_conservation_mean"         # Mean patch conservation.
+    │   │   │   ├── "patch_conservation_difference"   # The difference between mean patch conservation and mean non-patch conservation.
+    │   │   │   └── "patch_conservation_pvalue"       # p-value of the Mann-Whitney U test of patch conservations to the non-patch conservations.
     .   .   .
     .   .   .
     .   .   .
-    │   │   └── "patch_Y"                       # List of residues in the Yth patch. This is the patch extracted in the Yth iteration of the pipeline. Y is also the last iteration when the pipeline managed to extract a patch. It may equal to --number_of_iterations, but problems might happen like centrality algorithm didn't converge or found a null graph which stops the pipeline from iterating.
+    │   │   └── "patch_Y"                       # The Yth patch. This is the patch extracted in the Yth iteration of the pipeline. Y is also the last iteration when the pipeline managed to extract a patch. It may equal to --number_of_iterations, but problems might happen like centrality algorithm didn't converge or found a null graph which stops the pipeline from iterating.
 
 ##### Example:
 ```
@@ -280,21 +284,24 @@ The merged_data.json file is the major output of the pipeline and it has the fol
    "A":{
       "1":{
          "residues":{
-            "569":{
-               "accessibility":1,
-               "direct_neighbors":[
-                  "588",
-                  "568",
-                  "570",
-                  "590",
-                  "567",
-                  "586",
-                  "587"
+            "318": {
+               "accessibility": 1,
+               "direct_neighbors": [
+                  "598",
+                  "551",
+                  "338",
+                  "600",
+                  "553",
+                  "319",
+                  "554"
                ],
-               "conservation":0.9800213730114914,
-               "score_1":0.053242423120163467,
-               "score_2":0.06493437708360261,
-               "score_3":0.14207539050855633
+               "conservation": 0.8349590754476024,
+               "score_1": 0.00033068561774767614,
+               "score_2": 0.003976137444726946,
+               "score_3": 0.004157688400901547,
+               "score_4": 0.03592842084943813,
+               "score_5": 0.01930988819468361,
+               "score_6": 0.19329758289234808
             },
             
             .
@@ -302,153 +309,172 @@ The merged_data.json file is the major output of the pipeline and it has the fol
             .
             
             
-            "481":{
-               "accessibility":1,
-               "direct_neighbors":[
-                  "482",
-                  "484",
-                  "488",
-                  "461",
-                  "483",
-                  "479"
+            "599": {
+               "accessibility": 1,
+               "direct_neighbors": [
+                  "387",
+                  "365",
+                  "600",
+                  "319",
+                  "321"
                ],
-               "conservation":0.02442049018777954,
-               "score_1":1.5743151237165947e-05,
-               "score_2":3.6067521230009605e-05,
-               "score_3":0.0001062967061076688,
-               "score_4":0.000297498470140901,
-               "score_5":0.003226209826219515,
-               "score_6":0.0034970183811533617,
-               "score_7":1.2720170094315094e-07,
-               "score_8":0.00020938996371843265,
-               "score_9":7.831977990248131e-17,
-               "score_10":0.0011277709361562313,
-               "score_11":1.6578448400169872e-05,
-               "score_12":7.951245944424763e-18,
-               "score_13":-3.711039523855571e-17,
-               "score_14":0.001565006522628566,
-               "score_15":-9.826237778743287e-17,
-               "score_16":1.5226014301304893e-16,
-               "score_17":1.5479693663486075e-17,
-               "score_18":9.11271197709341e-16,
-               "score_19":-6.831509768318384e-16,
-               "score_20":5.654817645439343e-18
+               "conservation": 0.17295363833060104,
+               "score_1": 0.00010753379553353566,
+               "score_2": 0.0022105078526197678,
+               "score_3": 0.001117286314411295,
+               "score_4": 0.013368541320983066,
+               "score_5": 0.0013258888042676014,
+               "score_6": 0.01427290268982088,
+               "score_7": 0.05193837060072906,
+               "score_8": 1.6861154589542962e-7,
+               "score_9": 0.00037484282552134704,
+               "score_10": 0.000017629096441159546,
+               "score_11": 0.04617722058371434,
+               "score_12": -1.2681081705743956e-15,
+               "score_13": 1.7241949030324695e-15,
+               "score_14": 0.2616932881394638
             },
-            "433":{
-               "accessibility":1,
-               "direct_neighbors":[
-                  "438",
-                  "384",
-                  "435",
-                  "395"
+            "600": {
+               "accessibility": 1,
+               "direct_neighbors": [
+                  "599",
+                  "362",
+                  "365",
+                  "318",
+                  "598",
+                  "319"
                ],
-               "conservation":0.9921633859944954,
-               "score_1":0.0038023064253798412,
-               "score_2":0.1166187093841972,
-               "score_3":0.020399471467322534,
-               "score_4":0.3401026273680234
+               "conservation": 0.21248774408861887,
+               "score_1": 0.0000761960316721797,
+               "score_2": 0.0016847472149046766,
+               "score_3": 0.000997893003956213,
+               "score_4": 0.01343725373983663,
+               "score_5": 0.004481525100512187,
+               "score_6": 0.04512572092482299,
+               "score_7": 0.04099458733679399,
+               "score_8": 2.031085956839882e-7,
+               "score_9": 0.0004508437188904322,
+               "score_10": 0.000021196411712485968,
+               "score_11": 0.055361193620167434,
+               "score_12": -1.4889439728584647e-15,
+               "score_13": 1.9990920480167914e-15,
+               "score_14": 0.3074308020579626
             }
          },
-         "patch_1":[
-            "357",
-            "404",
-            "592",
+         "patch_1": {
+            "residues": [
+               "405",
+               "421",
+               "499",
             
             .
             .
             .
             
-            "468",
-            "596",
-            "548"
-         ],
+               "562",
+               "592",
+               "326"
+            ],
+            "patch_conservation_mean": 0.9575961426660872,
+            "patch_conservation_difference": 0.30507939164836484,
+            "patch_conservation_pvalue": 8.596211261183572e-7
+         },
          
          .
          .
          .
          
-         "patch_20":[
-            "429",
-            "442"
-         ]
+         "patch_20": {
+            "residues": [
+               "508",
+               "506",
+               "507"
+            ],
+            "patch_conservation_mean": 0.187915590231306,
+            "patch_conservation_difference": -0.4941059262313974,
+            "patch_conservation_pvalue": 0.9934569500920662
+         }
       },
       "2":{
          "residues":{
-            "43":{
-               "accessibility":1,
-               "direct_neighbors":[
-                  "44",
-                  "42",
-                  "45"
+            "41": {
+               "accessibility": 1,
+               "direct_neighbors": [
+                  "43",
+                  "42"
                ],
-               "conservation":0.2895153150655207,
-               "score_1":5.385905385527337e-08,
-               "score_2":1.4060713614160727e-05,
-               "score_3":2.4619712208448296e-17,
-               "score_4":5.503709193648589e-05,
-               "score_5":4.7048914948664833e-17,
-               "score_6":0.001995248967941242,
-               "score_7":2.3937219494890312e-17,
-               "score_8":-2.988131354053637e-17,
-               "score_9":0.00021845395125914973,
-               "score_10":0.042416629195786384,
-               "score_11":1.0031818449494086e-16,
-               "score_12":3.692446695015138e-17,
-               "score_13":3.584953655424851e-18,
-               "score_14":1.4223217634554498e-16,
-               "score_15":4.2085572494897746e-17,
-               "score_16":-1.6621678810559538e-18,
-               "score_17":7.194404491665816e-16,
-               "score_18":1.0404002054294159e-16,
-               "score_19":0.586004580885965
+               "conservation": 0.31485642770736555,
+               "score_1": 4.095330317951117e-9,
+               "score_2": 0.000004357793466783931,
+               "score_3": 0.000015317220742269545,
+               "score_4": 0.0000010318277367862613,
+               "score_5": 0.00000546114369877771,
+               "score_6": 0.000028724474458458038,
+               "score_7": -7.920020924280168e-18,
+               "score_8": 0.0006733410768030233,
+               "score_9": 0.000003798160113791288,
+               "score_10": 5.376602530989818e-18,
+               "score_11": 0.003945267490756683,
+               "score_12": -8.031149324261881e-17,
+               "score_13": -8.451131673320225e-17,
+               "score_14": -6.493675595735365e-16,
+               "score_15": -2.0968819501682493e-15,
+               "score_16": -4.76131098384193e-16,
+               "score_17": 0.47769033067499245
             },
             
             .
             .
             .
             
-            "223":{
-               "accessibility":1,
-               "direct_neighbors":[
-                  "224",
-                  "225",
+            "312": {
+               "accessibility": 1,
+               "direct_neighbors": [
+                  "222",
+                  "221",
+                  "310",
+                  "309",
                   "311",
-                  "312",
-                  "222"
+                  "223"
                ],
-               "conservation":1.0,
-               "score_1":0.07161495483220802,
-               "score_2":0.04890532776917767,
-               "score_3":0.3663655357268663
+               "conservation": 0.8056384639036711,
+               "score_1": 0.05457085596700717
             }
          },
-         "patch_1":[
-            "295",
-            "294",
+         "patch_1": {
+            "residues": [
+               "295",
+               "294",
             
             .
             .
             .
             
-            "284",
-            "310"
-         ],
+               "281",
+               "312"
+            ],
+            "patch_conservation_mean": 0.8518427508531001,
+            "patch_conservation_difference": 0.21933607974408698,
+            "patch_conservation_pvalue": 3.1043509158711496e-7
+         },
          
          .
          .
          .
          
-         "patch_20":[
-            "64",
-            "63",
-            
-            .
-            .
-            .
-            
-            "53",
-            "54"
-         ]
+         "patch_20": {
+            "residues": [
+               "56",
+               "57",
+               "60",
+               "53",
+               "58",
+               "54"
+            ],
+            "patch_conservation_mean": 0.21788566503943327,
+            "patch_conservation_difference": -0.46527161683305185,
+            "patch_conservation_pvalue": 0.9998017813668787
+         }
       }
    }
 }
@@ -459,7 +485,7 @@ The merged_data.json file is the major output of the pipeline and it has the fol
 *.pse file can be loaded using PyMOL. It enables the virtualisation of all the detected patches with their ranks.
 
 Example:
-![PyMOL session](https://raw.githubusercontent.com/hkotb/pocket-detector/main/img/pymol.gif)
+![PyMOL session](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/pymol.gif)
 > **Note**
 > In this example, chain A is split into two domains, A1 and A2. A.excluded contains the excluded residues, whether because they are in the protein's core or disordered. The red colours on the 3D structure represent high scores, while blue is for average scores.
 
