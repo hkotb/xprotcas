@@ -14,7 +14,9 @@ Pipeline to score residues and extract patches from the protein surface based on
 
 ## Description
 
-Coming soon.
+![xProtCAS workflow](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/workflow.png)
+
+The workflow of the framework includes five major steps: (i) definition of the autonomous structural units of a protein; (ii) calculation of the residue-centric conservation, accessibility and topology metrics for the structural unit; (iii) creation of an edge-weighted directed graph encoding the structural and evolutionary properties for the structural unit; (iv) definition the conserved accessible surfaces using hierarchical clustering of eigenvector centrality scores; and (v) scoring and annotation of the conserved accessible surfaces. For more details, please refer to the paper.
 
 ## Software prerequisites
 
