@@ -25,7 +25,7 @@ The following is the list of required libraries and programs, as well as the ver
 * [BioPython](https://github.com/biopython/biopython) (1.78) . To parse PDB files. 
 * [NetworkX](https://networkx.org/) (2.8) . To run graph algorithms (Centrality and Community Detection).
 * [NumPy](https://numpy.org/) (1.20.1) . To handle N-dimensional arrays.
-* [SciPy](https://scipy.org/) (1.8.1) . To implement the Delaunay triangulation.
+* [SciPy](https://scipy.org/) (1.8.1) . To implement the Delaunay triangulation and Mann-Whitney U test.
 * [Scikit-Learn](https://scikit-learn.org/stable/) (0.24.1) . To run hierarchical clustering.
 * [Requests](https://pypi.org/project/requests/) (2.25.1) .  To send HTTP requests.
 * [Pymol](https://pymol.org/2/) (2.4) . To visualise files of the detected patches (optional).
