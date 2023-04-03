@@ -2,7 +2,7 @@
 
 ## Home page
 
-| ![home page](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/homepage.png) |
+| ![home page](https://raw.githubusercontent.com/hkotb/xprotcas/main/img/homepage.png) |
 |:--:|
 | **Figure 1** Home page of xProtCAS web server. |
 - Use the text box to search a protein name, gene name, or UniProt accession.
@@ -11,7 +11,7 @@
 
 ## Analysis page
 
-| ![analysis page](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page1.png) |
+| ![analysis page](https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page1.png) |
 |:--:|
 | **Figure 2** The default analysis page of the xProtCAS web server. |
 
@@ -23,7 +23,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page2.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page2.png" width="300" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page2.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page2.png" width="300" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -46,7 +46,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page3.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page3.png" width="500" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page3.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page3.png" width="500" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -61,7 +61,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page4.png" width="450" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page4.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page4.png" width="450" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -76,7 +76,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page5.png" width="500" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page5.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page5.png" width="500" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
@@ -93,7 +93,7 @@
 <table align="center">
 <thead>
 <tr>
-<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page6.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/analysis_page6.png" width="700" style="max-width: 100%;"></a></th>
+<th align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page6.png"><img align="center" src="https://raw.githubusercontent.com/hkotb/xprotcas/main/img/analysis_page6.png" width="700" style="max-width: 100%;"></a></th>
 </tr>
 </thead>
 <tbody>
