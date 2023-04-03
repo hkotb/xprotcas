@@ -14,7 +14,7 @@ The xProtCAS (e**x**tracting **Prot**ein **C**onserved **A**ccessible **S**urfac
 
 ## Description
 
-![xProtCAS workflow](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/workflow.png)
+![xProtCAS workflow](https://raw.githubusercontent.com/hkotb/xprotcas/main/img/workflow.png)
 
 The workflow of the framework includes five major steps: (i) definition of the autonomous structural units of a protein; (ii) calculation of the residue-centric conservation, accessibility and topology metrics for the structural unit; (iii) creation of an edge-weighted directed graph encoding the structural and evolutionary properties for the structural unit; (iv) definition the conserved accessible surfaces using hierarchical clustering of eigenvector centrality scores; and (v) scoring and annotation of the conserved accessible surfaces. For more details, please refer to the paper.
 
@@ -41,19 +41,19 @@ Choose one of the three following installation methods. However, using our prebu
 Install dependencies in the [Software prerequisites](#software-prerequisites) section and clone the repository to a local directory:
 
 ```
-git clone https://github.com/hkotb/xProtCAS.git
-cd xProtCAS/src
+git clone https://github.com/hkotb/xprotcas.git
+cd xprotcas/src
 ```
 > **Note**
-> It is more convenient to make `xProtCAS/src` your current working directory before running the pipeline using python commands on your local machine, as the default input and output pathes are relative pathes.
+> It is more convenient to make `xprotcas/src` your current working directory before running the pipeline using python commands on your local machine, as the default input and output pathes are relative pathes.
 
 ### Build a docker image
 
 To build a Docker image from the provided Dockerfile run the following steps:
 
 ```
-git clone https://github.com/hkotb/xProtCAS.git
-cd xProtCAS/
+git clone https://github.com/hkotb/xprotcas.git
+cd xprotcas/
 docker build -t xprotcas .
 ```
 > **Note**
@@ -484,7 +484,7 @@ The merged_data.json file is the major output of the pipeline and it has the fol
 *.pse file can be loaded using PyMOL. It enables the virtualisation of all the detected patches with their ranks.
 
 Example:
-![PyMOL session](https://raw.githubusercontent.com/hkotb/xProtCAS/main/img/pymol.gif)
+![PyMOL session](https://raw.githubusercontent.com/hkotb/xprotcas/main/img/pymol.gif)
 > **Note**
 > In this example, chain A is split into two domains, A1 and A2. A.excluded contains the excluded residues, whether because they are in the protein's core or disordered. The red colours on the 3D structure represent high scores, while blue is for average scores.
 
