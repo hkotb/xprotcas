@@ -25,6 +25,7 @@
 - Pfam domains interseting the structural unit and the start and end positions of the structural unit on the protein sequence. 
 - The predicted pocket evaluation scores: absolute patch conservation, relative patch conservation, and relative patch conservation p-value.
 - Structure quality scores of the structural unit: mean AlphaFold2 pLDDT score and mean AlphaFold2 Predicted Aligned Error (PAE) score.
+
 #### 8. Switch between different views of the selected structural unit:
 - Display the separated structural unit (Default).
 - Display the structural unit in the context of the full-length protein.
@@ -94,6 +95,7 @@
 - AlphaFold2 accessibility: Accessibility scores calculated using DSSP software are used in colouring residues.
 - Tesselation accessibility all atom: Tesselation accessibility where the residue is considered accessible if any of its atoms is accessible. Accessible residues are displayed in red.
 - Tesselation accessibility sidechain: Tesselation accessibility where the residue is considered accessible if any of its side chain atoms is accessible. Accessible residues are displayed in red.
+
 #### 10. Display the loading status of the data used on this page. After loading data finishes, the related functionality on this page resumes, and data can be downloaded (Centrality data, UniProt data, AlphaFold data, Accessibility data, Contact data, Conservation data, and Alignment data).
 #### 11. External links.
 
