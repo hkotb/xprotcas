@@ -15,13 +15,16 @@
 |:--:|
 | **Figure 2** The default analysis page of the xProtCAS web server. |
 
-#### 1. Tool name (clicking on it takes you back to the home page)
-#### 2. Protein name and species (clicking on it opens the UniProt page of the protein).
+#### 1. Tool name (click it to take you back to the home page)
+#### 2. Protein name and species (click it to open the UniProt page of the protein).
 #### 3. Interactive 3D viewer of AlphaFold predicted protein structure and protein sequence.
 #### 4. Button to hide/display the side menu.
 #### 5. Button to open the help page.
 #### 6. Button to go back to the home page.
-#### 7. List of the predicted autonomous structural units with the ability to switch between them to change the viewer's perspective. Each structural unit is represented by Pfam domains interseting it and the start and end positions of the structural unit on the protein sequence. It shows the predicted pocket evaluation scores: absolute patch conservation, relative patch conservation, and relative patch conservation p-value, and structure quality scores of the structural unit: mean AlphaFold2 pLDDT score and mean AlphaFold2 Predicted Aligned Error (PAE) score.
+#### 7. List of the predicted autonomous structural units with the ability to switch between them to change the viewer's perspective. Each structural unit is represented by: 
+1. Pfam domains interseting the structural unit and the start and end positions of the structural unit on the protein sequence. 
+2. The predicted pocket evaluation scores: absolute patch conservation, relative patch conservation, and relative patch conservation p-value
+3. Structure quality scores of the structural unit: mean AlphaFold2 pLDDT score and mean AlphaFold2 Predicted Aligned Error (PAE) score.
 #### 8. Switch between different views of the selected structural unit:
 - Display the separated structural unit (Default).
 - Display the structural unit in the context of the full-length protein.
