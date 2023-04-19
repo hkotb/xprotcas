@@ -52,7 +52,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>Figure 5</strong> Graph representation of the structural unit. Each residue is a node represented with a circle in the graph; the filling colour of the circle reflects the chosen scoring scheme (if any), the blue colour of the circles' circumference shows if the residue is a contacting residue in any known interface, and the circle size reflects residue's accessibility. Neighbouring nodes are connected with edges where edge thickness represents centrality scores.</td>
+<td align="center"><strong>Figure 5</strong> A graph representation of the structural unit. The graph displays each residue as a node represented with a circle in the graph; the filling colour of the circle reflects the chosen scoring scheme (if any), and the blue colour of the circles' circumference shows if the residue is a contacting residue in any known interface. The circle size reflects the residue's accessibility. Neighbouring nodes are connected with edges where edge thickness represents centrality scores.</td>
 </tr>
 </tbody>
 </table>
@@ -67,7 +67,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><strong>Figure 6</strong> Multiple sequence alignment of the structural unit. An extension of the Clustal X Colour Scheme is used in colouring residues, where the default scheme colours are used, plus using grey colour for negative BLOSUM64 scoring positions and circle squares for charged residues. The top sequence logo of the positions' conservation is scaled with residues accessibility, leading to the boldness of the more conserved and accessible residues. Each position is made hoverable to make it easy to follow.</td>
+<td align="center"><strong>Figure 6</strong> Multiple sequence alignment view of the structural unit. A variant of the Clustal X Colour Scheme is used to colour residues, where the default scheme colours are used, plus using grey colour for negative BLOSUM64 scoring positions and circles for charged residues changes. The sequence logo shows the composition of the alignment column of each position scaled by residue accessibility to emphasise more conserved and accessible residues. Each position is hoverable and reveals a tooltip with a detailed description.</td>
 </tr>
 </tbody>
 </table>
