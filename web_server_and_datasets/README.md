@@ -99,7 +99,7 @@
 
 ## Technology Stack
 
-- Backend: [Python](https://www.python.org/) (3.8) is used. PDB files are parsed with [BioPython](https://github.com/biopython/biopython) (1.78). Centrality and Community Detection are implemented based on [NetworkX](https://networkx.org/) (2.8). [NumPy](https://numpy.org/) (1.20.1) is used to handle N-dimensional arrays and [SciPy](https://scipy.org/) (1.8.1) to implement the Delaunay triangulation and Mann-Whitney U test. [Scikit-Learn](https://scikit-learn.org/stable/) (0.24.1) hierarchical clustering is used. HTTP requests are sent with [Requests](https://pypi.org/project/requests/) (2.25.1). APIs are built with [FastAPI](https://fastapi.tiangolo.com/), and [Apache Kafka](https://kafka.apache.org/) is used internally to import data from internal pipelines.
+- Backend: [Python](https://www.python.org/) is used. PDB files are parsed with [BioPython](https://github.com/biopython/biopython). Centrality and Community Detection are implemented based on [NetworkX](https://networkx.org/). [NumPy](https://numpy.org/) is used to handle N-dimensional arrays and [SciPy](https://scipy.org/) to implement the Delaunay triangulation and Mann-Whitney U test. [Scikit-Learn](https://scikit-learn.org/stable/) is used in hierarchical clustering. HTTP requests are sent with [Requests](https://pypi.org/project/requests/). APIs are built with [FastAPI](https://fastapi.tiangolo.com/), and [Apache Kafka](https://kafka.apache.org/) is used internally to import data from internal pipelines.
 - Frontend: User interface is built with [React](https://react.dev/).  Network viewer is based on [Cytoscape](https://cytoscape.org/). Strucutre viewer is based on [NGL](https://nglviewer.org/).
 
 ## Contact Information and Feedback
