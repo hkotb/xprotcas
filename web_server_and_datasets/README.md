@@ -23,7 +23,7 @@
 #### 6. Button to go back to the home page.
 #### 7. List of the predicted autonomous structural units with the ability to switch between them to change the viewer's perspective. Each structural unit is represented by: 
 - Pfam domains interseting the structural unit and the start and end positions of the structural unit on the protein sequence. 
-- The predicted pocket evaluation scores: absolute patch conservation, relative patch conservation, and relative patch conservation p-value
+- The predicted pocket evaluation scores: absolute patch conservation, relative patch conservation, and relative patch conservation p-value.
 - Structure quality scores of the structural unit: mean AlphaFold2 pLDDT score and mean AlphaFold2 Predicted Aligned Error (PAE) score.
 #### 8. Switch between different views of the selected structural unit:
 - Display the separated structural unit (Default).
