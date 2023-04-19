@@ -104,4 +104,4 @@
 
 ## Contact Information and Feedback
 
-For technical assistance or to provide feedback on your experience using the website, please email norman.davey@icr.ac.uk.
+For technical assistance or to provide feedback on your experience using the website, please contact norman.davey@icr.ac.uk.
