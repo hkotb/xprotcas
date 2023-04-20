@@ -1,4 +1,4 @@
-# Help page for xProtCAS web server
+# Help page for the xProtCAS server
 
 ## Getting Started (Home page)
 
