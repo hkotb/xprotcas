@@ -16,7 +16,8 @@ The xProtCAS (e**x**tracting **Prot**ein **C**onserved **A**ccessible **S**urfac
 
 ![xProtCAS workflow](https://raw.githubusercontent.com/hkotb/xprotcas/main/img/workflow.png)
 
-The workflow of the framework includes five major steps: (i) definition of the autonomous structural units of a protein; (ii) calculation of the residue-centric conservation, accessibility and topology metrics for the structural unit; (iii) creation of an edge-weighted directed graph encoding the structural and evolutionary properties for the structural unit; (iv) definition the conserved accessible surfaces using hierarchical clustering of eigenvector centrality scores; and (v) scoring and annotation of the conserved accessible surfaces. For more details, please refer to the paper.
+The workflow of the xProtCAS framework includes eight major steps: (i) definition of the autonomous structural modules of a protein; (ii) calculation of the residue-centric accessibility and topology metrics for the structural module; (iii) calculation of the per residue conservation scores; (iv) creation of an edge-weighted directed graph encoding the structural and evolutionary properties for the structural module; (v) calculation of eigenvector centrality scores; (vi) definition of the conserved accessible surfaces using hierarchical clustering; and (vii) scoring and (viii) annotation of the conserved accessible surfaces. This stand-alone version can use either AlphaFold2 models or PDB structures and can define
+multiple surfaces. For more details, please refer to the paper.
 
 ## Software prerequisites
 
