@@ -497,6 +497,17 @@ This source code is licensed under the MIT license found in the `LICENSE` file i
 
 If you find the pipeline useful in your research, we ask that you cite our paper:
 ```
-Coming soon
+@Article{biom13060906,
+AUTHOR = {Kotb, Hazem M. and Davey, Norman E.},
+TITLE = {xProtCAS: A Toolkit for Extracting Conserved Accessible Surfaces from Protein Structures},
+JOURNAL = {Biomolecules},
+VOLUME = {13},
+YEAR = {2023},
+NUMBER = {6},
+ARTICLE-NUMBER = {906},
+URL = {https://www.mdpi.com/2218-273X/13/6/906},
+ISSN = {2218-273X},
+DOI = {10.3390/biom13060906}
+}
 ```
 
