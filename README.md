@@ -1,4 +1,4 @@
-# xProtCAS: a toolkit for extracting conserved accessible surfaces from protein structures
+# xProtCAS: A Toolkit for Extracting Conserved Accessible Surfaces from Protein Structures
 
 The xProtCAS (e**x**tracting **Prot**ein **C**onserved **A**ccessible **S**urfaces) framework is a pipeline for the discovery of clusters of conserved residues on the surface of folded structural modules as a proxy for functional interfaces. The xProtCAS pipeline integrates information on residue solvent accessibility and conservation with topological data on residue proximity in three-dimensional space using graph-based methods to determine proximal clusters of relatively conserved residues on a protein's surface.
 
